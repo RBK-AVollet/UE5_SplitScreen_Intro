@@ -5,11 +5,11 @@
 
 #include "Interactable.h"
 
-void UInteractionFunctionLibrary::AppendInteractionPromptToInteractableActor(TScriptInterface<IInteractable> interactable, UWidgetComponent* Widget,
+void UInteractionFunctionLibrary::AppendInteractionPromptToInteractableActor(UWidgetComponent* Widget, FVector Offset,
 	FTransform Transform)
 {
 	FVector pos = Transform.GetLocation();
-	Widget->SetWorldLocation(pos + interactable.GetInterface()->GetInteractionPromptOffset());
+	Widget->SetWorldLocation(pos + Offset);
 	Widget->SetVisibility(true);
 }
 

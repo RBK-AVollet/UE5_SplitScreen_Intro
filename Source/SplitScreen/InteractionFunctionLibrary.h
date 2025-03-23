@@ -18,8 +18,8 @@ class SPLITSCREEN_API UInteractionFunctionLibrary : public UBlueprintFunctionLib
 
 public:
 	UFUNCTION(BlueprintCallable)
-	static void AppendInteractionPromptToInteractableActor(TScriptInterface<IInteractable> interactable,
-		UWidgetComponent* Widget, FTransform Transform);
+	static void AppendInteractionPromptToInteractableActor(UWidgetComponent* Widget, FVector Offset,
+		FTransform Transform);
 	
 	UFUNCTION(BlueprintCallable)
 	static void HideInteractionPrompt(UWidgetComponent* Widget);

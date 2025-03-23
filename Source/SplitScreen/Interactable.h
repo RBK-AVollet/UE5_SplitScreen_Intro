@@ -3,13 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CustomPlayerState.h"
 #include "UObject/Interface.h"
 #include "Interactable.generated.h"
 
-class UCustomPlayerState;
-
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI)
+UINTERFACE(MinimalAPI, Blueprintable)
 class UInteractable : public UInterface
 {
 	GENERATED_BODY()
@@ -24,6 +23,11 @@ class SPLITSCREEN_API IInteractable
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual FVector GetInteractionPromptOffset() { return FVector::UpVector * 100; }
-	virtual void Interact(UCustomPlayerState* PlayerState);
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interaction")
+	FVector GetInteractionPromptOffset();
+
+	virtual FVector GetInteractionPromptOffset_Implementation();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
+	void Interact();
 };
